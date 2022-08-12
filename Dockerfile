@@ -1,14 +1,19 @@
-FROM node:16
+# FROM node:16
+FROM node:lts-alpine3.16
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-RUN npm ci --only=production
+COPY yarn.lock ./
+# RUN npm install --location=global yarn
+RUN yarn install --production=true
+# RUN npm ci --only=production
 # Bundle app source
 COPY . .
 EXPOSE 3000
-RUN npm run build
+RUN npm install --location=global @nestjs/cli
+RUN nest build
 CMD [ "node", "dist/main.js" ]
 
