@@ -11,6 +11,7 @@ COPY yarn.lock ./
 RUN yarn install --production=true
 # RUN npm ci --only=production
 # Bundle app source
+COPY . .
 RUN npm install --location=global @nestjs/cli
 RUN nest build
 COPY . .
