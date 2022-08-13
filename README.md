@@ -3,7 +3,11 @@
 
 Basic TODO App built with Ionic (React), Nestjs, TypeORM
 
-## Installation
+## Installation ( using docker )
+- Download `docker-compose.yml` file
+- Run `docker-compose up -d`
+
+## Installation ( to run the code locally )
 
 ```bash
 $ yarn install
